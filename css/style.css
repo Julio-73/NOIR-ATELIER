@@ -35,6 +35,18 @@ body {
 @media (pointer: coarse) {
     body { cursor: auto; }
     .cursor-dot, .cursor-ring { display: none !important; }
+    
+    /* Restaurar cursores por defecto en dispositivos táctiles/híbridos */
+    .theme-toggle,
+    .menu-toggle,
+    .newsletter-form button,
+    .product-sidebar-btn,
+    .cart-panel-close,
+    .cart-panel-item-remove,
+    .cart-panel-checkout,
+    .mobile-theme-toggle {
+        cursor: pointer !important;
+    }
 }
 
 /* ===== PRELOADER ===== */

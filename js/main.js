@@ -1,6 +1,24 @@
 (function() {
     'use strict';
 
+    // ===== HTML & THEME INITIALIZATION =====
+    var htmlEl = document.documentElement;
+    var savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem('noir-theme');
+    } catch (e) {
+        console.warn('localStorage is not accessible:', e);
+    }
+
+    if (savedTheme) {
+        htmlEl.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        htmlEl.setAttribute('data-theme', 'light');
+        try {
+            localStorage.setItem('noir-theme', 'light');
+        } catch (e) {}
+    }
+
     // ===== PRELOADER with real loading bar =====
     var preloader = document.getElementById('preloader');
     var preloaderFill = document.getElementById('preloader-fill');
@@ -164,10 +182,11 @@
     document.querySelectorAll('.collection-item').forEach(function(card) {
         var img = card.querySelector('img');
         if (!img) return;
-        var overlay = card.querySelector('.collection-overlay');
+        var parent = img.parentNode;
+        var overlay = parent.querySelector('.collection-overlay') || card.querySelector('.collection-overlay');
         var wrapper = document.createElement('div');
         wrapper.className = 'tilt-inner';
-        card.insertBefore(wrapper, img);
+        parent.insertBefore(wrapper, img);
         wrapper.appendChild(img);
         if (overlay) wrapper.appendChild(overlay);
         card.addEventListener('mousemove', function(e) {
@@ -187,19 +206,13 @@
 
     // ===== THEME TOGGLE =====
     var themeToggle = document.getElementById('theme-toggle');
-    var htmlEl = document.documentElement;
-    var savedTheme = localStorage.getItem('noir-theme');
-    if (savedTheme) {
-        htmlEl.setAttribute('data-theme', savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        htmlEl.setAttribute('data-theme', 'light');
-        localStorage.setItem('noir-theme', 'light');
-    }
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
             var newTheme = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             htmlEl.setAttribute('data-theme', newTheme);
-            localStorage.setItem('noir-theme', newTheme);
+            try {
+                localStorage.setItem('noir-theme', newTheme);
+            } catch (e) {}
             updateNavBg();
             console.log('Theme changed to:', newTheme);
         });
@@ -211,7 +224,9 @@
         mobileThemeToggle.addEventListener('click', function() {
             var newTheme = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             htmlEl.setAttribute('data-theme', newTheme);
-            localStorage.setItem('noir-theme', newTheme);
+            try {
+                localStorage.setItem('noir-theme', newTheme);
+            } catch (e) {}
             updateNavBg();
         });
     }
@@ -234,7 +249,12 @@
     }
 
     // ===== CART FUNCTIONALITY =====
-    var cart = JSON.parse(localStorage.getItem('noir-cart')) || [];
+    var cart = [];
+    try {
+        cart = JSON.parse(localStorage.getItem('noir-cart')) || [];
+    } catch (e) {
+        console.warn('Could not load cart from localStorage:', e);
+    }
     var cartBtn = document.getElementById('cart-btn');
     var cartPanel = document.getElementById('cart-panel');
     var cartPanelClose = document.getElementById('cart-panel-close');
@@ -243,7 +263,9 @@
     var cartCount = document.getElementById('cart-count');
 
     function saveCart() {
-        localStorage.setItem('noir-cart', JSON.stringify(cart));
+        try {
+            localStorage.setItem('noir-cart', JSON.stringify(cart));
+        } catch (e) {}
     }
     function updateCartCount() {
         if (cartCount) {
