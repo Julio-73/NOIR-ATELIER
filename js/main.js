@@ -36,6 +36,10 @@
         if (preloaderFill) preloaderFill.style.width = '100%';
         setTimeout(function() {
             if (preloader) preloader.classList.add('done');
+            // Animar el título del Hero tras cargar la web
+            document.querySelectorAll('.hero .reveal-content').forEach(function(el) {
+                el.classList.add('visible');
+            });
         }, 400);
     }
     window.addEventListener('load', function() { setTimeout(hidePreloader, 600); });
@@ -127,7 +131,7 @@
         });
     }, { root: null, rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in, .fade-scale, .fade-left, .fade-right').forEach(function(el) {
+    document.querySelectorAll('.fade-in, .fade-scale, .fade-left, .fade-right, .reveal-content').forEach(function(el) {
         observer.observe(el);
     });
 
@@ -233,8 +237,18 @@
 
     // ===== STICKY PRODUCT SIDEBAR =====
     var productSidebar = document.getElementById('product-sidebar');
+    var sidebarClosedByUser = false;
     if (productSidebar) {
+        var sidebarCloseBtn = document.getElementById('product-sidebar-close');
+        if (sidebarCloseBtn) {
+            sidebarCloseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                sidebarClosedByUser = true;
+                productSidebar.classList.remove('visible');
+            });
+        }
         function toggleSidebar() {
+            if (sidebarClosedByUser) return;
             var y = window.scrollY || window.pageYOffset;
             var hero = document.querySelector('.hero');
             var heroHeight = hero ? hero.offsetHeight : window.innerHeight;
@@ -286,9 +300,39 @@
                     '<h4>' + item.name + '</h4>' +
                     '<p>€' + item.price + ' x ' + (item.qty || 1) + '</p>' +
                     '</div>' +
-                    '<button class="cart-panel-item-remove" data-index="' + index + '">✕</button>' +
+                    '<button class="cart-panel-item-remove" data-index="' + index + '">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+                    '</button>' +
                     '</div>';
             }).join('');
+            
+            // Venta Cruzada (Upsell)
+            var hasUpsellItem = cart.some(function(item) { return item.name === 'Cinturón Ligne'; });
+            if (!hasUpsellItem) {
+                var upsellHtml = '<div class="cart-upsell-container">' +
+                    '<span class="cart-upsell-title">Completa tu look</span>' +
+                    '<div class="cart-upsell-card">' +
+                    '<img src="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=100&q=80" alt="Cinturón Ligne">' +
+                    '<div class="cart-upsell-info">' +
+                    '<h4>Cinturón Ligne</h4>' +
+                    '<p>€180</p>' +
+                    '</div>' +
+                    '<button class="cart-upsell-add-btn" data-name="Cinturón Ligne" data-price="180" data-img="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=200&q=80">Añadir</button>' +
+                    '</div>' +
+                    '</div>';
+                cartPanelItems.innerHTML += upsellHtml;
+                
+                var upsellBtn = cartPanelItems.querySelector('.cart-upsell-add-btn');
+                if (upsellBtn) {
+                    upsellBtn.addEventListener('click', function() {
+                        var name = this.dataset.name;
+                        var price = parseInt(this.dataset.price);
+                        var img = this.dataset.img;
+                        addToCart(name, price, img);
+                    });
+                }
+            }
+
             document.querySelectorAll('.cart-panel-item-remove').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     cart.splice(parseInt(this.dataset.index), 1);
@@ -298,8 +342,31 @@
                 });
             });
         }
+        
         var total = cart.reduce(function(sum, item) { return sum + (item.price * (item.qty || 1)); }, 0);
         if (cartPanelTotal) cartPanelTotal.textContent = '€' + total;
+
+        // Barra de Envío Gratis
+        var shippingContainer = document.getElementById('cart-shipping-container');
+        if (shippingContainer) {
+            if (total === 0) {
+                shippingContainer.innerHTML = '';
+            } else {
+                var limit = 150;
+                var progressPercent = Math.min((total / limit) * 100, 100);
+                var noticeHtml = '';
+                if (total >= limit) {
+                    noticeHtml = '<span class="cart-shipping-notice"><strong>¡Envío gratis conseguido!</strong></span>';
+                } else {
+                    var remaining = limit - total;
+                    noticeHtml = '<span class="cart-shipping-notice">Te faltan <strong>€' + remaining + '</strong> para envío gratis</span>';
+                }
+                shippingContainer.innerHTML = noticeHtml +
+                    '<div class="cart-shipping-progress">' +
+                    '<div class="cart-shipping-progress-fill" style="width: ' + progressPercent + '%;"></div>' +
+                    '</div>';
+            }
+        }
     }
     function addToCart(name, price, img) {
         var existing = cart.find(function(item) { return item.name === name; });
@@ -339,6 +406,14 @@
             this.textContent = 'Añadido ✓';
             this.style.backgroundColor = 'var(--accent)';
             this.style.color = 'var(--text-primary)';
+            
+            if (this.classList.contains('product-sidebar-btn')) {
+                setTimeout(function() {
+                    sidebarClosedByUser = true;
+                    if (productSidebar) productSidebar.classList.remove('visible');
+                }, 1000);
+            }
+
             setTimeout(function() {
                 btn.textContent = btn.classList.contains('product-add-btn') ? 'Añadir a la bolsa — €' + price : 'Añadir a la bolsa';
                 btn.style.backgroundColor = '';
@@ -411,5 +486,47 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
     }
+
+    // ===== LOOKBOOK HOTSPOTS INTERACTIVITY =====
+    document.querySelectorAll('.hotspot-trigger').forEach(function(trigger) {
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var parent = this.parentNode;
+            var isActive = parent.classList.contains('active');
+            document.querySelectorAll('.hotspot').forEach(function(h) {
+                h.classList.remove('active');
+            });
+            if (!isActive) parent.classList.add('active');
+        });
+    });
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.hotspot').forEach(function(h) {
+            h.classList.remove('active');
+        });
+    });
+    document.querySelectorAll('.hotspot-popover').forEach(function(popover) {
+        popover.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+
+    // Bind Hotspot Buy Buttons
+    document.querySelectorAll('.hotspot-buy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var name = this.dataset.name || 'Producto';
+            var price = parseInt(this.dataset.price) || 0;
+            var img = this.dataset.img || '';
+            addToCart(name, price, img);
+            this.textContent = 'Añadido ✓';
+            this.style.backgroundColor = 'var(--accent)';
+            this.style.color = 'var(--text-primary)';
+            var self = this;
+            setTimeout(function() {
+                self.textContent = 'Añadir bolsa';
+                self.style.backgroundColor = '';
+                self.style.color = '';
+            }, 2000);
+        });
+    });
 
 })();

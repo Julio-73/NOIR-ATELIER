@@ -51,11 +51,11 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-                <span class="theme-icon theme-icon-moon">☾</span>
-                <span class="theme-icon theme-icon-sun">☼</span>
+                <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
             </button>
             <button class="cart-btn" id="cart-btn" aria-label="Carrito">
-                <span class="cart-icon">⚲</span>
+                <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 <span class="cart-count" id="cart-count">0</span>
             </button>
             <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -82,8 +82,14 @@
                 <p class="mobile-menu-email">hola@noiratelier.com</p>
                 <p class="mobile-menu-location">Madrid, España</p>
                 <button class="mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Cambiar tema">
-                    <span class="theme-icon theme-icon-moon">☾ Modo Oscuro</span>
-                    <span class="theme-icon theme-icon-sun">☼ Modo Claro</span>
+                    <span class="theme-icon theme-icon-moon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                        Modo Oscuro
+                    </span>
+                    <span class="theme-icon theme-icon-sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                        Modo Claro
+                    </span>
                 </button>
             </div>
         </div>
@@ -95,10 +101,13 @@
         <div class="cart-panel-content">
             <div class="cart-panel-header">
                 <h3>Tu Bolsa</h3>
-                <button class="cart-panel-close" id="cart-panel-close">✕</button>
+                <button class="cart-panel-close" id="cart-panel-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
             </div>
             <div class="cart-panel-items" id="cart-panel-items"></div>
             <div class="cart-panel-footer">
+                <div id="cart-shipping-container"></div>
                 <div class="cart-panel-total">
                     <span>Total</span>
                     <span id="cart-panel-total">€0</span>
@@ -116,7 +125,10 @@
         </div>
         <div class="hero-content">
             <p class="hero-subtitle">Est. 2024 — Paris / Madrid</p>
-            <h1 class="hero-title">La moda es<br>un <em>arte</em> silencioso</h1>
+            <h1 class="hero-title">
+                <span class="reveal-wrap"><span class="reveal-content">La moda es</span></span><br>
+                <span class="reveal-wrap"><span class="reveal-content">un <em>arte</em> silencioso</span></span>
+            </h1>
             <p class="hero-desc">Diseño minimalista, materiales nobles y una estética atemporal que trasciende tendencias. Cada pieza cuenta una historia de elegancia brutal.</p>
             <a href="#coleccion" class="hero-cta">Explorar Colección</a>
         </div>
@@ -131,7 +143,10 @@
         <div class="philosophy-text">
             <div class="philosophy-number fade-in">01</div>
             <p class="section-label fade-in">Nuestra Filosofía</p>
-            <h2 class="section-title fade-in">Menos es<br>infinitamente <em>más</em></h2>
+            <h2 class="section-title">
+                <span class="reveal-wrap"><span class="reveal-content">Menos es</span></span><br>
+                <span class="reveal-wrap"><span class="reveal-content">infinitamente <em>más</em></span></span>
+            </h2>
             <p class="fade-in">Creemos en el poder de la restricción. En un mundo saturado de ruido visual, elegimos el silencio del diseño. Cada costura, cada textura, cada silueta es una declaración de intenciones. No seguimos tendencias; las desafiamos con piezas que perduran.</p>
         </div>
         <div class="philosophy-image fade-scale">
@@ -217,7 +232,7 @@
                 </div>
             </div>
             <div class="horizontal-scroll-item fade-in">
-                <img src="https://images.unsplash.com/photo-1605218427306-022ba6b2c9f6?w=600&q=80" alt="Selección de tejidos" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80" alt="Selección de tejidos" loading="lazy">
                 <div class="horizontal-scroll-item-info">
                     <span class="horizontal-scroll-num">02</span>
                     <h4>Selección</h4>
@@ -225,7 +240,7 @@
                 </div>
             </div>
             <div class="horizontal-scroll-item fade-in">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Confección artesanal" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1528570c32186-43a8a71afd6f?w=600&q=80" alt="Confección artesanal" loading="lazy">
                 <div class="horizontal-scroll-item-info">
                     <span class="horizontal-scroll-num">03</span>
                     <h4>Confección</h4>
@@ -266,7 +281,10 @@
         </div>
         <div class="editorial-text">
             <p class="section-label fade-in">Editorial</p>
-            <h2 class="section-title fade-in">Brutalismo<br>en su <em>esencia</em></h2>
+            <h2 class="section-title">
+                <span class="reveal-wrap"><span class="reveal-content">Brutalismo</span></span><br>
+                <span class="reveal-wrap"><span class="reveal-content">en su <em>esencia</em></span></span>
+            </h2>
             <p class="fade-in">Nuestro editorial de temporada explora la intersección entre la arquitectura brutalista y la moda contemporánea. Líneas limpias, formas imponentes y una paleta que habla de concrete y sombra.</p>
             <p class="fade-in">Cada fotografía es un estudio de luz, textura y forma. Trabajamos con fotógrafos que comprenden que la moda no es solo lo que llevas, es lo que proyectas.</p>
             <div class="editorial-quote fade-in">
@@ -279,16 +297,71 @@
     <section class="lookbook" id="lookbook">
         <div class="lookbook-header">
             <p class="section-label fade-in">Lookbook</p>
-            <h2 class="section-title fade-in">El arte de<br>vestir con <em>intención</em></h2>
+            <h2 class="section-title">
+                <span class="reveal-wrap"><span class="reveal-content">El arte de</span></span><br>
+                <span class="reveal-wrap"><span class="reveal-content">vestir con <em>intención</em></span></span>
+            </h2>
         </div>
         <div class="lookbook-scroll stagger-children">
             <div class="lookbook-item fade-in">
                 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&q=80" alt="Look 1" loading="lazy">
                 <div class="lookbook-item-info"><h4>Look 01 — Aube</h4></div>
+                
+                <!-- Hotspot 1: Abrigo Vérité -->
+                <div class="hotspot" style="top: 35%; left: 45%;">
+                    <button class="hotspot-trigger" aria-label="Ver producto">+</button>
+                    <div class="hotspot-popover">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=100&q=80" alt="Abrigo Vérité">
+                        <div class="hotspot-popover-info">
+                            <h5>Abrigo Vérité</h5>
+                            <p>€890</p>
+                            <button class="hotspot-buy-btn" data-name="Abrigo Vérité" data-price="890" data-img="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=80">Añadir bolsa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotspot 2: Cinturón Ligne -->
+                <div class="hotspot" style="top: 60%; left: 52%;">
+                    <button class="hotspot-trigger" aria-label="Ver producto">+</button>
+                    <div class="hotspot-popover">
+                        <img src="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=100&q=80" alt="Cinturón Ligne">
+                        <div class="hotspot-popover-info">
+                            <h5>Cinturón Ligne</h5>
+                            <p>€180</p>
+                            <button class="hotspot-buy-btn" data-name="Cinturón Ligne" data-price="180" data-img="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=200&q=80">Añadir bolsa</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="lookbook-item fade-in">
                 <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Look 2" loading="lazy">
                 <div class="lookbook-item-info"><h4>Look 02 — Crépuscule</h4></div>
+
+                <!-- Hotspot 3: Vestido Nuit -->
+                <div class="hotspot" style="top: 45%; left: 50%;">
+                    <button class="hotspot-trigger" aria-label="Ver producto">+</button>
+                    <div class="hotspot-popover">
+                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=100&q=80" alt="Vestido Nuit">
+                        <div class="hotspot-popover-info">
+                            <h5>Vestido Nuit</h5>
+                            <p>€650</p>
+                            <button class="hotspot-buy-btn" data-name="Vestido Nuit" data-price="650" data-img="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=200&q=80">Añadir bolsa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotspot 4: Botas Sombre -->
+                <div class="hotspot" style="top: 80%; left: 45%;">
+                    <button class="hotspot-trigger" aria-label="Ver producto">+</button>
+                    <div class="hotspot-popover">
+                        <img src="https://images.unsplash.com/photo-1550614000-4b9519e02a48?w=100&q=80" alt="Botas Sombre">
+                        <div class="hotspot-popover-info">
+                            <h5>Botas Sombre</h5>
+                            <p>€420</p>
+                            <button class="hotspot-buy-btn" data-name="Botas Sombre" data-price="420" data-img="https://images.unsplash.com/photo-1550614000-4b9519e02a48?w=200&q=80">Añadir bolsa</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="lookbook-item fade-in">
                 <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80" alt="Look 3" loading="lazy">
@@ -475,6 +548,9 @@
     <!-- STICKY PRODUCT SIDEBAR -->
     <div class="product-sidebar" id="product-sidebar">
         <div class="product-sidebar-inner">
+            <button class="product-sidebar-close" id="product-sidebar-close" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
             <div class="product-sidebar-img">
                 <a href="product.html"><img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=300&q=80" alt="Abrigo Vérité" loading="lazy"></a>
             </div>
@@ -491,6 +567,7 @@
     <script src="js/main.js?v=2"></script>
 </body>
 </html>
+
 
 
 
