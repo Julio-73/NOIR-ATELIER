@@ -201,6 +201,7 @@
             htmlEl.setAttribute('data-theme', newTheme);
             localStorage.setItem('noir-theme', newTheme);
             updateNavBg();
+            console.log('Theme changed to:', newTheme);
         });
     }
 
