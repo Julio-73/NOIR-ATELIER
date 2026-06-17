@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NOIR ATELIER — Minimalist Fashion</title>
+    <meta name="description" content="Diseño minimalista, materiales nobles y una estética atemporal que trasciende tendencias. Casa de moda fundada en el corazón de Europa.">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Noir Atelier">
+    <meta property="og:title" content="NOIR ATELIER — Minimalist Fashion">
+    <meta property="og:description" content="La moda es un arte silencioso. Diseño minimalista, materiales nobles.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&q=80">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='55' fill='%23c9a96e' text-anchor='middle' font-style='italic'%3EN%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%230a0a0a'/%3E%3Ctext x='90' y='125' font-family='serif' font-size='100' fill='%23c9a96e' text-anchor='middle' font-style='italic'%3EN%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">Noir</div>
+        <div class="preloader-bar"><div class="preloader-bar-fill" id="preloader-fill"></div></div>
+        <div class="preloader-sub">Atelier</div>
+    </div>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scroll-progress"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
+
+    <!-- NOISE TEXTURE -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Noir Atelier</div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#filosofia">Filosofía</a></li>
+                <li><a href="#coleccion">Colección</a></li>
+                <li><a href="#editorial">Editorial</a></li>
+                <li><a href="#lookbook">Lookbook</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                <span class="theme-icon theme-icon-moon">☾</span>
+                <span class="theme-icon theme-icon-sun">☼</span>
+            </button>
+            <button class="cart-btn" id="cart-btn" aria-label="Carrito">
+                <span class="cart-icon">⚲</span>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU — OUTSIDE nav -->
+    <div class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-links">
+                <li class="mobile-nav-item"><span class="mobile-nav-num">01</span><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">02</span><a href="#filosofia" class="mobile-nav-link">Filosofía</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">03</span><a href="#coleccion" class="mobile-nav-link">Colección</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">04</span><a href="#editorial" class="mobile-nav-link">Editorial</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">05</span><a href="#lookbook" class="mobile-nav-link">Lookbook</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">06</span><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu-footer">
+                <p class="mobile-menu-email">hola@noiratelier.com</p>
+                <p class="mobile-menu-location">Madrid, España</p>
+                <button class="mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Cambiar tema">
+                    <span class="theme-icon theme-icon-moon">☾ Modo Oscuro</span>
+                    <span class="theme-icon theme-icon-sun">☼ Modo Claro</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART PANEL -->
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-panel-bg"></div>
+        <div class="cart-panel-content">
+            <div class="cart-panel-header">
+                <h3>Tu Bolsa</h3>
+                <button class="cart-panel-close" id="cart-panel-close">✕</button>
+            </div>
+            <div class="cart-panel-items" id="cart-panel-items"></div>
+            <div class="cart-panel-footer">
+                <div class="cart-panel-total">
+                    <span>Total</span>
+                    <span id="cart-panel-total">€0</span>
+                </div>
+                <button class="cart-panel-checkout">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO with ANIMATED BACKGROUND -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-animated">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1920&q=80" alt="Hero fashion" id="hero-animated-img">
+            <div class="hero-bg-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Est. 2024 — Paris / Madrid</p>
+            <h1 class="hero-title">La moda es<br>un <em>arte</em> silencioso</h1>
+            <p class="hero-desc">Diseño minimalista, materiales nobles y una estética atemporal que trasciende tendencias. Cada pieza cuenta una historia de elegancia brutal.</p>
+            <a href="#coleccion" class="hero-cta">Explorar Colección</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy" id="filosofia">
+        <div class="philosophy-text">
+            <div class="philosophy-number fade-in">01</div>
+            <p class="section-label fade-in">Nuestra Filosofía</p>
+            <h2 class="section-title fade-in">Menos es<br>infinitamente <em>más</em></h2>
+            <p class="fade-in">Creemos en el poder de la restricción. En un mundo saturado de ruido visual, elegimos el silencio del diseño. Cada costura, cada textura, cada silueta es una declaración de intenciones. No seguimos tendencias; las desafiamos con piezas que perduran.</p>
+        </div>
+        <div class="philosophy-image fade-scale">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Minimalist fashion editorial" loading="lazy">
+        </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section class="collection" id="coleccion">
+        <div class="collection-header">
+            <p class="section-label fade-in">Colección Otoño / Invierno</p>
+            <h2 class="section-title fade-in">Piezas que<br>desafían el <em>tiempo</em></h2>
+        </div>
+        <div class="collection-grid stagger-children">
+            <div class="collection-item fade-in" data-product="Abrigo Vérité" data-price="890">
+                <a href="product.html" class="collection-link">
+                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80" alt="Abrigo estructurado" loading="lazy">
+                    <div class="collection-overlay"><h3>Abrigo Vérité</h3><p>Lana merino · Negro</p></div>
+                </a>
+            </div>
+            <div class="collection-item fade-in">
+                <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&q=80" alt="Vestido minimalista" loading="lazy">
+                <div class="collection-overlay"><h3>Vestido Nuit</h3><p>Seda cruda · Gris perla</p></div>
+            </div>
+            <div class="collection-item fade-in">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="Conjunto tailored" loading="lazy">
+                <div class="collection-overlay"><h3>Blazer Obscura</h3><p>Algodón egipcio · Antracita</p></div>
+            </div>
+            <div class="collection-item fade-in">
+                <img src="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=600&q=80" alt="Accesorio premium" loading="lazy">
+                <div class="collection-overlay"><h3>Cinturón Ligne</h3><p>Cuero vegetal · Marrón</p></div>
+            </div>
+            <div class="collection-item fade-in">
+                <img src="https://images.unsplash.com/photo-1550614000-4b9519e02a48?w=600&q=80" alt="Botas premium" loading="lazy">
+                <div class="collection-overlay"><h3>Botas Sombre</h3><p>Cuero italiano · Negro</p></div>
+            </div>
+            <div class="collection-item fade-in">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=80" alt="Suéter oversize" loading="lazy">
+                <div class="collection-overlay"><h3>Suéter Brume</h3><p>Cachemira · Gris niebla</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee-section" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-item">Noir Atelier</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Paris</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Madrid</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Minimalist Fashion</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Artisanal</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Timeless</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Sustainable</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Brutal Elegance</span><span class="marquee-sep"></span>
+            </div>
+            <div class="marquee-content">
+                <span class="marquee-item">Noir Atelier</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Paris</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Madrid</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Minimalist Fashion</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Artisanal</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Timeless</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Sustainable</span><span class="marquee-sep"></span>
+                <span class="marquee-item">Brutal Elegance</span><span class="marquee-sep"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORIZONTAL SCROLL — Behind the Scenes -->
+    <section class="horizontal-scroll-section" id="atelier">
+        <div class="horizontal-scroll-header">
+            <p class="section-label fade-in">El Atelier</p>
+            <h2 class="section-title fade-in">Dónde la <em>perfección</em><br>nace en silencio</h2>
+        </div>
+        <div class="horizontal-scroll-container" id="horizontal-scroll">
+            <div class="horizontal-scroll-item fade-in">
+                <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Proceso de diseño" loading="lazy">
+                <div class="horizontal-scroll-item-info">
+                    <span class="horizontal-scroll-num">01</span>
+                    <h4>Boceto</h4>
+                    <p>Cada línea trazada a mano antes de la primera costura</p>
+                </div>
+            </div>
+            <div class="horizontal-scroll-item fade-in">
+                <img src="https://images.unsplash.com/photo-1605218427306-022ba6b2c9f6?w=600&q=80" alt="Selección de tejidos" loading="lazy">
+                <div class="horizontal-scroll-item-info">
+                    <span class="horizontal-scroll-num">02</span>
+                    <h4>Selección</h4>
+                    <p>Telas de proveedores certificados en Italia y Japón</p>
+                </div>
+            </div>
+            <div class="horizontal-scroll-item fade-in">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Confección artesanal" loading="lazy">
+                <div class="horizontal-scroll-item-info">
+                    <span class="horizontal-scroll-num">03</span>
+                    <h4>Confección</h4>
+                    <p>Artesanos con 20+ años de experiencia en cada pieza</p>
+                </div>
+            </div>
+            <div class="horizontal-scroll-item fade-in">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80" alt="Prueba final" loading="lazy">
+                <div class="horizontal-scroll-item-info">
+                    <span class="horizontal-scroll-num">04</span>
+                    <h4>Prueba</h4>
+                    <p>48 horas de prueba de ajuste, caída y durabilidad</p>
+                </div>
+            </div>
+            <div class="horizontal-scroll-item fade-in">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Empaque final" loading="lazy">
+                <div class="horizontal-scroll-item-info">
+                    <span class="horizontal-scroll-num">05</span>
+                    <h4>Entrega</h4>
+                    <p>Empaque sin plástico, certificado de autenticidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDITORIAL -->
+    <section class="editorial" id="editorial">
+        <div class="editorial-images">
+            <div class="editorial-img fade-in">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Editorial fashion 1" loading="lazy">
+            </div>
+            <div class="editorial-img fade-in">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Editorial fashion 2" loading="lazy">
+            </div>
+            <div class="editorial-img fade-in">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80" alt="Editorial fashion 3" loading="lazy">
+            </div>
+        </div>
+        <div class="editorial-text">
+            <p class="section-label fade-in">Editorial</p>
+            <h2 class="section-title fade-in">Brutalismo<br>en su <em>esencia</em></h2>
+            <p class="fade-in">Nuestro editorial de temporada explora la intersección entre la arquitectura brutalista y la moda contemporánea. Líneas limpias, formas imponentes y una paleta que habla de concrete y sombra.</p>
+            <p class="fade-in">Cada fotografía es un estudio de luz, textura y forma. Trabajamos con fotógrafos que comprenden que la moda no es solo lo que llevas, es lo que proyectas.</p>
+            <div class="editorial-quote fade-in">
+                "La elegancia no consiste en ponerse un vestido nuevo. Es una forma de moverse, de ocupar el espacio, de existir."
+            </div>
+        </div>
+    </section>
+
+    <!-- LOOKBOOK -->
+    <section class="lookbook" id="lookbook">
+        <div class="lookbook-header">
+            <p class="section-label fade-in">Lookbook</p>
+            <h2 class="section-title fade-in">El arte de<br>vestir con <em>intención</em></h2>
+        </div>
+        <div class="lookbook-scroll stagger-children">
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&q=80" alt="Look 1" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 01 — Aube</h4></div>
+            </div>
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Look 2" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 02 — Crépuscule</h4></div>
+            </div>
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80" alt="Look 3" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 03 — Minuit</h4></div>
+            </div>
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&q=80" alt="Look 4" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 04 — Brume</h4></div>
+            </div>
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&q=80" alt="Look 5" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 05 — Éther</h4></div>
+            </div>
+            <div class="lookbook-item fade-in">
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=500&q=80" alt="Look 6" loading="lazy">
+                <div class="lookbook-item-info"><h4>Look 06 — Sable</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonios">
+        <div class="testimonials-header">
+            <p class="section-label fade-in">Testimonios</p>
+            <h2 class="section-title fade-in">Lo que dicen<br>quienes <em>visten</em> la diferencia</h2>
+        </div>
+        <div class="testimonials-grid stagger-children">
+            <div class="testimonial-item fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"La calidad de la lana merino es incomparable. He tenido abrigos de marcas de lujo que no se acercan a la construcción de Noir. Un arte en cada costura."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Cliente" loading="lazy">
+                    <div>
+                        <h4>Elena Martínez</h4>
+                        <p>Directora Creativa, Barcelona</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Compré el Vestido Nuit para un evento de gala. No exageré cuando digo que recibí más cumplidos que nunca. La caída de la seda es mágica."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Cliente" loading="lazy">
+                    <div>
+                        <h4>Carlos Rojas</h4>
+                        <p>Arquitecto, Madrid</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Llevo 3 años comprando en Noir Atelier. Cada pieza mejora con el tiempo. Eso es verdadera moda atemporal, no fast fashion."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Cliente" loading="lazy">
+                    <div>
+                        <h4>Sofia Lindberg</h4>
+                        <p>Editora de Moda, Estocolmo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESS LOGOS -->
+    <section class="press-section" aria-hidden="true">
+        <p class="press-label">As Seen In</p>
+        <div class="press-logos">
+            <span class="press-logo">VOGUE</span>
+            <span class="press-logo">ELLE</span>
+            <span class="press-logo">Harper's</span>
+            <span class="press-logo">GQ</span>
+            <span class="press-logo">WWD</span>
+            <span class="press-logo">VANITY FAIR</span>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter" id="newsletter">
+        <div class="newsletter-inner">
+            <p class="section-label fade-in">Newsletter</p>
+            <h2 class="section-title fade-in">Suscríbete a<br>nuestra <em>visión</em></h2>
+            <p class="fade-in">Recibe acceso exclusivo a lanzamientos, editoriales y eventos privados. Sin ruido, solo contenido que importa.</p>
+            <div class="newsletter-form-wrap fade-in">
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required autocomplete="email">
+                    <button type="submit">Suscribirse</button>
+                </form>
+                <div class="newsletter-success" id="newsletter-success">Bienvenido a Noir Atelier.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO + TRUST BADGES -->
+    <section class="manifesto">
+        <div class="manifesto-grid stagger-children">
+            <div class="manifesto-item fade-in"><h3>12</h3><p>Años de artesanía</p></div>
+            <div class="manifesto-item fade-in"><h3>04</h3><p>Colecciones anuales</p></div>
+            <div class="manifesto-item fade-in"><h3>100%</h3><p>Materiales sostenibles</p></div>
+            <div class="manifesto-item fade-in"><h3>∞</h3><p>Atemporalidad</p></div>
+        </div>
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span class="trust-badge-icon">✓</span>
+                <span class="trust-badge-text">Envío gratis<br><strong>+€150</strong></span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">↩</span>
+                <span class="trust-badge-text">Devoluciones<br><strong>30 días</strong></span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">🔒</span>
+                <span class="trust-badge-text">Pago seguro<br><strong>SSL 256-bit</strong></span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">🌱</span>
+                <span class="trust-badge-text">Sostenible<br><strong>Certificado</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCARCITY COUNTDOWN -->
+    <section class="countdown-section">
+        <div class="countdown-inner">
+            <p class="section-label">Oferta Limitada</p>
+            <h2 class="section-title">Colección<br>Edición <em>Numerada</em></h2>
+            <p class="countdown-desc">La colección Otoño/Invierno 2024 está limitada a 100 piezas por diseño. Cada prenda lleva un número de serie bordado.</p>
+            <div class="countdown-timer" id="countdown-timer">
+                <div class="countdown-unit">
+                    <span class="countdown-num" id="countdown-days">02</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-num" id="countdown-hours">14</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-num" id="countdown-minutes">35</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-num" id="countdown-seconds">48</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+            <p class="countdown-stock">Solo quedan <strong>7</strong> piezas de la edición numerada</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-brand fade-in">
+                <div class="logo">Noir Atelier</div>
+                <p>Casa de moda minimalista fundada en el corazón de Europa. Diseñamos para quienes entienden que el verdadero lujo es la simplicidad.</p>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Explorar</h4>
+                <a href="#">Colección</a>
+                <a href="#">Lookbook</a>
+                <a href="#">Editorial</a>
+                <a href="#">Archivo</a>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Marca</h4>
+                <a href="#">Nuestra Historia</a>
+                <a href="#">Sostenibilidad</a>
+                <a href="#">Artesanos</a>
+                <a href="#">Prensa</a>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Contacto</h4>
+                <a href="#">hola@noiratelier.com</a>
+                <a href="#">+34 91 123 45 67</a>
+                <a href="#">Madrid, España</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Noir Atelier. Todos los derechos reservados.</p>
+            <p>Diseñado con brutal elegancia.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY PRODUCT SIDEBAR -->
+    <div class="product-sidebar" id="product-sidebar">
+        <div class="product-sidebar-inner">
+            <div class="product-sidebar-img">
+                <a href="product.html"><img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=300&q=80" alt="Abrigo Vérité" loading="lazy"></a>
+            </div>
+            <div class="product-sidebar-info">
+                <p class="product-sidebar-label">Destacado</p>
+                <h4 class="product-sidebar-name"><a href="product.html">Abrigo Vérité</a></h4>
+                <p class="product-sidebar-price">€890</p>
+                <p class="product-sidebar-desc">Lana merino · Edición limitada</p>
+                <button class="product-sidebar-btn" id="product-sidebar-btn" data-name="Abrigo Vérité" data-price="890" data-img="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=80">Añadir a la bolsa</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

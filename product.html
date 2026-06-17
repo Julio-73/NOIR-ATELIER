@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Abrigo Vérité — Noir Atelier</title>
+    <meta name="description" content="Abrigo Vérité — Lana merino italiana, silueta estructurada, edición limitada. Diseño minimalista brutal.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='55' fill='%23c9a96e' text-anchor='middle' font-style='italic'%3EN%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">Noir</div>
+        <div class="preloader-bar"><div class="preloader-bar-fill" id="preloader-fill"></div></div>
+        <div class="preloader-sub">Atelier</div>
+    </div>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scroll-progress"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
+
+    <!-- NOISE TEXTURE -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Noir Atelier</div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#coleccion">Colección</a></li>
+                <li><a href="index.html#lookbook">Lookbook</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                <span class="theme-icon theme-icon-moon">☾</span>
+                <span class="theme-icon theme-icon-sun">☼</span>
+            </button>
+            <button class="cart-btn" id="cart-btn" aria-label="Carrito">
+                <span class="cart-icon">⚲</span>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-links">
+                <li class="mobile-nav-item"><span class="mobile-nav-num">01</span><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">02</span><a href="index.html#coleccion" class="mobile-nav-link">Colección</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">03</span><a href="index.html#lookbook" class="mobile-nav-link">Lookbook</a></li>
+                <li class="mobile-nav-item"><span class="mobile-nav-num">04</span><a href="index.html#contacto" class="mobile-nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CART PANEL -->
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-panel-bg"></div>
+        <div class="cart-panel-content">
+            <div class="cart-panel-header">
+                <h3>Tu Bolsa</h3>
+                <button class="cart-panel-close" id="cart-panel-close">✕</button>
+            </div>
+            <div class="cart-panel-items" id="cart-panel-items"></div>
+            <div class="cart-panel-footer">
+                <div class="cart-panel-total">
+                    <span>Total</span>
+                    <span id="cart-panel-total">€0</span>
+                </div>
+                <button class="cart-panel-checkout">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT PAGE -->
+    <section class="product-page">
+        <div class="product-gallery">
+            <div class="product-gallery-main">
+                <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80" alt="Abrigo Vérité" id="product-main-img">
+            </div>
+            <div class="product-gallery-thumbs">
+                <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=80" alt="Vista 1" class="product-thumb active" data-src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&q=80" alt="Vista 2" class="product-thumb" data-src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=200&q=80" alt="Vista 3" class="product-thumb" data-src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&q=80">
+            </div>
+        </div>
+        <div class="product-info">
+            <p class="product-info-label">Edición Limitada</p>
+            <h1 class="product-info-title">Abrigo Vérité</h1>
+            <p class="product-info-price">€890</p>
+            <p class="product-info-desc">Abrigo estructurado en lana merino italiana de 450g. Silueta oversized con hombros caídos, cuello alto y cierre oculto. Forro en seda cruda. Hecho a mano en nuestro atelier de Madrid.</p>
+            
+            <div class="product-selector">
+                <p class="product-selector-label">Color</p>
+                <div class="product-selector-options">
+                    <button class="product-selector-option active" data-color="Negro">Negro</button>
+                    <button class="product-selector-option" data-color="Gris">Gris</button>
+                    <button class="product-selector-option" data-color="Camel">Camel</button>
+                </div>
+            </div>
+            
+            <div class="product-selector">
+                <p class="product-selector-label">Talla</p>
+                <div class="product-selector-options">
+                    <button class="product-selector-option" data-size="XS">XS</button>
+                    <button class="product-selector-option active" data-size="S">S</button>
+                    <button class="product-selector-option" data-size="M">M</button>
+                    <button class="product-selector-option" data-size="L">L</button>
+                </div>
+            </div>
+            
+            <div class="product-scarcity">
+                <span class="product-scarcity-dot"></span>
+                <span class="product-scarcity-text">Solo quedan <strong>3 unidades</strong> en talla S</span>
+            </div>
+            
+            <button class="product-add-btn" id="product-add-btn" data-name="Abrigo Vérité" data-price="890" data-img="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=80">
+                Añadir a la bolsa — €890
+            </button>
+            
+            <div class="product-trust">
+                <span class="product-trust-item">✓ Envío gratis</span>
+                <span class="product-trust-item">✓ Devoluciones 30 días</span>
+                <span class="product-trust-item">✓ Pago seguro</span>
+            </div>
+            
+            <div class="product-details">
+                <div class="product-details-item">
+                    <span class="product-details-key">Composición</span>
+                    <span class="product-details-value">100% Lana merino italiana</span>
+                </div>
+                <div class="product-details-item">
+                    <span class="product-details-key">Forro</span>
+                    <span class="product-details-value">Seda cruda 100%</span>
+                </div>
+                <div class="product-details-item">
+                    <span class="product-details-key">Hecho en</span>
+                    <span class="product-details-value">Madrid, España</span>
+                </div>
+                <div class="product-details-item">
+                    <span class="product-details-key">Cuidado</span>
+                    <span class="product-details-value">Limpieza en seco</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="related-products">
+        <p class="section-label fade-in">También te puede gustar</p>
+        <h2 class="section-title fade-in">Completar tu<br>look <em>perfecto</em></h2>
+        <div class="related-products-grid">
+            <div class="related-product-item fade-in">
+                <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&q=80" alt="Vestido Nuit" loading="lazy">
+                <h4>Vestido Nuit</h4>
+                <p>€650</p>
+            </div>
+            <div class="related-product-item fade-in">
+                <img src="https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=400&q=80" alt="Cinturón Ligne" loading="lazy">
+                <h4>Cinturón Ligne</h4>
+                <p>€180</p>
+            </div>
+            <div class="related-product-item fade-in">
+                <img src="https://images.unsplash.com/photo-1550614000-4b9519e02a48?w=400&q=80" alt="Botas Sombre" loading="lazy">
+                <h4>Botas Sombre</h4>
+                <p>€420</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-brand fade-in">
+                <div class="logo">Noir Atelier</div>
+                <p>Casa de moda minimalista fundada en el corazón de Europa. Diseñamos para quienes entienden que el verdadero lujo es la simplicidad.</p>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Explorar</h4>
+                <a href="index.html#coleccion">Colección</a>
+                <a href="index.html#lookbook">Lookbook</a>
+                <a href="index.html#editorial">Editorial</a>
+                <a href="#">Archivo</a>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Marca</h4>
+                <a href="#">Nuestra Historia</a>
+                <a href="#">Sostenibilidad</a>
+                <a href="#">Artesanos</a>
+                <a href="#">Prensa</a>
+            </div>
+            <div class="footer-col fade-in">
+                <h4>Contacto</h4>
+                <a href="#">hola@noiratelier.com</a>
+                <a href="#">+34 91 123 45 67</a>
+                <a href="#">Madrid, España</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Noir Atelier. Todos los derechos reservados.</p>
+            <p>Diseñado con brutal elegancia.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
